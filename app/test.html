@@ -1,0 +1,36 @@
+<html>
+<head>
+
+<title>onunload test</title>
+
+<script type="text/javascript">
+
+//window.onbeforeunload = unloadPage();
+//window.onunload = unloadPage();
+//window.onClose = unloadPage();
+
+function unloadPage()
+{
+  //document.location.href="http://127.0.0.1:8080/close.php";
+  if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  }
+  else
+  {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  
+  xmlhttp.open("GET","http://127.0.0.1:8080/close.php",true);
+  xmlhttp.send();
+}
+</script>
+</head>
+
+<body onClose="javascript:unloadPage();" onUnLoad="javascript:unloadPage()" >
+<p>Reload a new page into the browser<br />
+ to fire the unload event for this page.</p>
+<p>You can also use the back or forward buttons<br />
+ to load a new page and fire this event.</p>
+</body>
+</html>
